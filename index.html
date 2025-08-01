@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Game Dashboard UI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="dashboard">
+
+    <aside class="sidebar">
+      <div class="sidebar-icons">
+        <span class="icon">🏠</span>
+        <span class="icon">🎮</span>
+        <span class="icon">📰</span>
+        <span class="icon">⚙️</span>
+      </div>
+    </aside>
+    <main class="main-content">
+      <header class="header">
+        <div>
+          <span class="greeting">Good evening,</span>
+          <span class="username"><b>Aman</b></span>
+        </div>
+        <input type="text" class="search" placeholder="Search" />
+        <div class="header-tools">
+          <span class="icon notif">🔔</span>
+          <span class="icon user-avatar">
+            <img src="https://randomuser.me/api/portraits/men/64.jpg" alt="User" />
+          </span>
+        </div>
+      </header>
+
+      <section class="featured-game">
+        <div class="featured-img">
+          <img src="https://static-prod-g4l.gamelauncher.io/N_13596.jpg" alt="Valorant" />
+        </div>
+        <div class="featured-info">
+          <span class="tag popular">Popular</span>
+          <h1 class="game-title">Games</h1>
+          <p class="game-desc">
+            Valorant is a multiplayer computer game developed and published by Riot Games.<br>
+            Valorant is a free-to-play first-person shooter.
+          </p>
+          <div class="reviews">
+            <img class="avatar-sm" src="https://randomuser.me/api/portraits/men/36.jpg" alt="">
+            <img class="avatar-sm" src="https://randomuser.me/api/portraits/women/37.jpg" alt="">
+            <img class="avatar-sm" src="https://randomuser.me/api/portraits/men/43.jpg" alt="">
+            <span class="add-reviews">+52 Reviews</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="new-games">
+        <h2>New Games</h2>
+        <div class="game-cards">
+          <div class="game-card">
+            <img src="https://static-prod-g4l.gamelauncher.io/N_11580.jpg" alt="Uncharted 4">
+            <div class="card-info">
+              <span class="card-title">Uncharted 4</span>
+            </div>
+          </div>
+          <div class="game-card">
+            <img src="https://static-prod-g4l.gamelauncher.io/N_11700.jpg" alt="Dishonored">
+            <div class="card-info">
+              <span class="card-title">Dishonored: Standard Edition</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="downloads">
+        <h2>Last Downloads</h2>
+        <div class="download-card">
+          <div class="dl-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/en/e/e9/FIFA_23_Cover.jpg" alt="FIFA 23">
+          </div>
+          <div class="dl-info">
+            <span class="dl-title">FIFA 23</span>
+            <span class="dl-category">Sports simulator</span>
+          </div>
+          <div class="dl-progress">
+            <div class="progress-bar"><div class="progress"></div></div>
+            <span class="dl-time">1 hour 23 min.</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+<script src="app.js"></script>
+</body>
+</html>
