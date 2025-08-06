@@ -2,96 +2,329 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Game Dashboard UI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
-    rel="stylesheet"
-  >
-  <link rel="stylesheet" href="styles.css" />
+  <title>Sidebar with Animation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: rgb(255, 110, 168);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .dashboard {
+      display: flex;
+      max-width: 1550px;
+      margin: 40px auto;
+      background: #3c1624;
+      border-radius: 35px;
+      box-shadow: 0 16px 36px 6px rgba(92, 24, 68, 0.17);
+      overflow: hidden;
+      min-height: 850px;
+      width: 100%;
+    }
+
+    .sidebar {
+      flex: 0 0 60px;
+      background: #54202e;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 0;
+      gap: 30px;
+    }
+
+    .sidebar-icons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 34px;
+      margin-top: 25px;
+    }
+
+    .icon {
+      font-size: 24px;
+      color: #d2dae2;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      position: relative;
+      opacity: 0.8;
+    }
+
+    .icon.active {
+      color: #fff;
+      transform: scale(1.2);
+      opacity: 1;
+    }
+
+    .icon:hover {
+      transform: scale(1.3);
+    }
+
+    .icon.active::before {
+      content: '';
+      position: absolute;
+      left: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 80px;
+      height: 40px;
+      background: linear-gradient(135deg, #f25a70, #9d3a66);
+      border-top-left-radius: 25px;
+      border-bottom-left-radius: 25px;
+      z-index: -1;
+    }
+
+    .content {
+      flex: 1;
+      padding: 40px;
+      display: none;
+      animation: slideIn 0.4s ease forwards;
+    }
+
+    .content.active {
+      display: block;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .main-content {
+      flex: 2.3;
+      padding: 30px 30px 30px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      color: #fff;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 5px;
+    }
+
+    .greeting {
+      font-weight: 400;
+      color: #cca4c6;
+      font-size: 1.07em;
+    }
+
+    .username {
+      margin-left: 3px;
+      color: #ffe076;
+      font-weight: 700;
+    }
+
+    .search {
+      background: #5B223D;
+      border: none;
+      border-radius: 15px;
+      padding: 10px 20px;
+      color: #fff;
+      width: 230px;
+      font-size: 1em;
+      margin-right: auto;
+    }
+
+    .header-tools {
+      display: flex;
+      align-items: center;
+      gap: 17px;
+    }
+
+    .header-tools .icon {
+      font-size: 1.4em;
+      cursor: pointer;
+    }
+
+    .user-avatar img {
+      width: 32px;
+      height: 32px;
+      object-fit: cover;
+      border-radius: 40px;
+      border: 2px solid #fc7685;
+    }
+
+    .featured-game {
+      background: linear-gradient(101deg, #f04865, #7f3e77 70%);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      box-shadow: 0 6px 40px 0 rgba(225, 30, 91, 0.10);
+    }
+
+    .featured-img img {
+      border-radius: 13px;
+      width: 130px;
+      height: 130px;
+      object-fit: cover;
+    }
+
+    .featured-info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .tag.popular {
+      background: #ffe076;
+      color: #514603;
+      font-weight: 600;
+      font-size: 0.75rem;
+      border-radius: 8px;
+      padding: 2px 13px;
+      width: fit-content;
+    }
+
+    .game-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .game-desc {
+      font-size: 1rem;
+      color: #ffdfe9;
+    }
+
+    .reviews {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .avatar-sm {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2.5px solid #fc7685;
+    }
+
+    .add-reviews {
+      color: #fde5ec;
+      font-size: 0.91em;
+    }
+
+    .lgin {
+      color: goldenrod;
+      text-decoration: none;
+    }
+
+    .lgin:hover {
+      color: yellow;
+    }
+  </style>
 </head>
+
 <body>
   <div class="dashboard">
-
-    <aside class="sidebar">
+    <!-- Sidebar -->
+    <div class="sidebar">
       <div class="sidebar-icons">
-        <span class="icon">🏠</span>
-        <span class="icon">🎮</span>
-        <span class="icon">📰</span>
-        <span class="icon">⚙️</span>
+        <span class="icon active" data-target="home" title="Home">🏠</span>
+        <span class="icon" data-target="games" title="Games">🎮</span>
+        <span class="icon" data-target="news" title="News">📰</span>
+        <span class="icon" data-target="settings" title="Settings">⚙️</span>
       </div>
-    </aside>
-    <main class="main-content">
-      <header class="header">
-        <div>
-          <span class="greeting">Good evening,</span>
-          <span class="username"><b>Aman</b></span>
-        </div>
-        <input type="text" class="search" placeholder="Search" />
-        <div class="header-tools">
-          <span class="icon notif">🔔</span>
-          <span class="icon user-avatar">
-            <img src="https://randomuser.me/api/portraits/men/64.jpg" alt="User" />
-          </span>
-        </div>
-      </header>
+    </div>
 
-      <section class="featured-game">
-        <div class="featured-img">
-          <img src="https://static-prod-g4l.gamelauncher.io/N_13596.jpg" alt="Valorant" />
-        </div>
-        <div class="featured-info">
-          <span class="tag popular">Popular</span>
-          <h1 class="game-title">Games</h1>
-          <p class="game-desc">
-            Valorant is a multiplayer computer game developed and published by Riot Games.<br>
-            Valorant is a free-to-play first-person shooter.
-          </p>
-          <div class="reviews">
-            <img class="avatar-sm" src="https://randomuser.me/api/portraits/men/36.jpg" alt="">
-            <img class="avatar-sm" src="https://randomuser.me/api/portraits/women/37.jpg" alt="">
-            <img class="avatar-sm" src="https://randomuser.me/api/portraits/men/43.jpg" alt="">
-            <span class="add-reviews">+52 Reviews</span>
+    <!-- Main content containers -->
+    <div id="home" class="content active">
+      <main class="main-content">
+        <header class="header">
+          <div>
+            <span class="greeting">Good evening,</span>
+            <span class="username"><br><a class="lgin" href="Login.html">Sign up or Login</a></span>
           </div>
-        </div>
-      </section>
+          <input type="text" class="search" placeholder="Search" />
+          <div class="header-tools">
+            <span class="icon notif">🔔</span>
+            <span class="icon user-avatar">
+              <img src="https://randomuser.me/api/portraits/men/64.jpg" alt="User" />
+            </span>
+          </div>
+        </header>
 
-      <section class="new-games">
-        <h2>New Games</h2>
-        <div class="game-cards">
-          <div class="game-card">
-            <img src="https://static-prod-g4l.gamelauncher.io/N_11580.jpg" alt="Uncharted 4">
-            <div class="card-info">
-              <span class="card-title">Uncharted 4</span>
+        <section class="featured-game">
+          <div class="featured-img">
+            <img src="https://static-prod-g4l.gamelauncher.io/N_13596.jpg" alt="Valorant" />
+          </div>
+          <div class="featured-info">
+            <span class="tag popular">Popular</span>
+            <h1 class="game-title">Games</h1>
+            <p class="game-desc">Valorant is a free-to-play first-person shooter developed by Riot Games.</p>
+            <div class="reviews">
+              <img class="avatar-sm" src="https://randomuser.me/api/portraits/men/36.jpg" alt="">
+              <img class="avatar-sm" src="https://randomuser.me/api/portraits/women/37.jpg" alt="">
+              <img class="avatar-sm" src="https://randomuser.me/api/portraits/men/43.jpg" alt="">
+              <span class="add-reviews">+52 Reviews</span>
             </div>
           </div>
-          <div class="game-card">
-            <img src="https://static-prod-g4l.gamelauncher.io/N_11700.jpg" alt="Dishonored">
-            <div class="card-info">
-              <span class="card-title">Dishonored: Standard Edition</span>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
+      </main>
+    </div>
 
-      <section class="downloads">
-        <h2>Last Downloads</h2>
-        <div class="download-card">
-          <div class="dl-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/en/e/e9/FIFA_23_Cover.jpg" alt="FIFA 23">
-          </div>
-          <div class="dl-info">
-            <span class="dl-title">FIFA 23</span>
-            <span class="dl-category">Sports simulator</span>
-          </div>
-          <div class="dl-progress">
-            <div class="progress-bar"><div class="progress"></div></div>
-            <span class="dl-time">1 hour 23 min.</span>
-          </div>
-        </div>
-      </section>
-    </main>
+
+
+    <div id="games" class="content">
+      <h1>Games</h1>
+      <p>Browse the latest and greatest in the world of gaming.</p>
+    </div>
+
+
+
+    <div id="news" class="content">
+      <h1>News</h1>
+      <p>Stay up to date with the latest headlines and trends.</p>
+    </div>
+
+
+
+    <div id="settings" class="content">
+      <h1>Settings</h1>
+      <p>Customize your preferences and configure your experience.</p>
+    </div>
   </div>
-<script src="app.js"></script>
+
+  
+
+
+
+  <script>
+    const icons = document.querySelectorAll('.icon');
+    const contents = document.querySelectorAll('.content');
+
+    icons.forEach(icon => {
+      icon.addEventListener('click', () => {
+        icons.forEach(i => i.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
+        icon.classList.add('active');
+        document.getElementById(icon.dataset.target).classList.add('active');
+      });
+    });
+  </script>
 </body>
+
 </html>
