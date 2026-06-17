@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LogiCode - AI Games, Fun Way to Learn Programming</title>
+  <title>LogiCode - Logic + Code Games</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -15,31 +16,45 @@
       font-family: "Poppins", sans-serif;
     }
 
+    :root {
+      --bg1: #ff6ea8;
+      --bg2: #7f3e77;
+      --dark: #24101b;
+      --panel: #3c1624;
+      --panel2: #4d1d31;
+      --side: #6b283a;
+      --text: #ffffff;
+      --muted: #ffdce8;
+      --gold: #ffe076;
+      --orange: #ff9800;
+      --pink: #f04865;
+    }
+
     body {
       min-height: 100vh;
-      background: linear-gradient(135deg, #ff6ea8, #7f3e77, #1c0b14);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 30px;
-      color: white;
+      background: radial-gradient(circle at top left, #ff92bc, transparent 28%),
+        linear-gradient(135deg, var(--bg1), var(--bg2), #14070e);
+      color: var(--text);
+      padding: 24px;
     }
 
     .dashboard {
       width: 100%;
-      max-width: 1450px;
-      min-height: 850px;
-      background: #3c1624;
-      border-radius: 35px;
-      overflow: hidden;
+      max-width: 1480px;
+      min-height: 860px;
+      margin: auto;
+      background: rgba(60, 22, 36, 0.94);
+      border-radius: 36px;
       display: flex;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      overflow: hidden;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.38);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .sidebar {
-      width: 75px;
-      background: #6b283a;
-      padding: 30px 0;
+      width: 82px;
+      background: rgba(107, 40, 58, 0.92);
+      padding: 28px 0;
       display: flex;
       justify-content: center;
     }
@@ -47,17 +62,16 @@
     .sidebar-icons {
       display: flex;
       flex-direction: column;
-      gap: 32px;
-      align-items: center;
+      gap: 28px;
     }
 
     .side-icon {
-      font-size: 28px;
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
       display: grid;
       place-items: center;
-      border-radius: 18px;
+      font-size: 25px;
       cursor: pointer;
       opacity: 0.75;
       transition: 0.3s ease;
@@ -66,15 +80,17 @@
     .side-icon:hover,
     .side-icon.active {
       opacity: 1;
-      transform: scale(1.12);
+      transform: scale(1.1);
       background: linear-gradient(135deg, #f25a70, #9d3a66);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.24);
     }
 
     .page {
       flex: 1;
-      padding: 35px;
+      padding: 34px;
       display: none;
       animation: fadeIn 0.35s ease;
+      overflow-y: auto;
     }
 
     .page.active {
@@ -84,8 +100,9 @@
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(14px);
+        transform: translateY(16px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -95,114 +112,72 @@
     .header {
       display: flex;
       align-items: center;
-      gap: 24px;
-      margin-bottom: 35px;
+      gap: 22px;
+      margin-bottom: 32px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-text {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text span {
+      color: var(--gold);
     }
 
     .greeting {
-      color: #cca4c6;
-      font-size: 15px;
-    }
-
-    .username {
-      color: #ffe076;
-      font-size: 22px;
-      font-weight: 700;
+      color: #e9bfd2;
+      font-size: 14px;
+      margin-top: 4px;
     }
 
     .search {
       margin-left: auto;
-      width: 260px;
-      padding: 12px 18px;
-      border: none;
-      outline: none;
-      border-radius: 15px;
+      max-width: 310px;
+      width: 100%;
+      padding: 13px 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
       background: #5b223d;
       color: white;
+      outline: none;
       font-size: 15px;
     }
 
-    .login-btn {
-      background: #ffe076;
-      color: #3c1624;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 14px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .hero {
-      background: linear-gradient(101deg, #f04865, #7f3e77 70%);
-      border-radius: 24px;
-      padding: 28px;
+    .profile-pill {
+      background: #5b223d;
+      border-radius: 18px;
+      padding: 10px 14px;
       display: flex;
       align-items: center;
-      gap: 28px;
-      margin-bottom: 35px;
+      gap: 10px;
+      min-width: fit-content;
     }
 
-    .hero img {
-      width: 150px;
-      height: 150px;
-      border-radius: 20px;
-      object-fit: cover;
-    }
-
-    .tag {
-      background: #ffe076;
-      color: #473d00;
-      width: fit-content;
-      padding: 5px 14px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      font-size: 38px;
-      margin-bottom: 8px;
-    }
-
-    h2 {
-      font-size: 30px;
-      margin-bottom: 20px;
-    }
-
-    p {
-      color: #ffdfe9;
-      line-height: 1.7;
-    }
-
-    .cards {
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: #3c1624;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      place-items: center;
+      font-weight: 800;
     }
 
-    .card {
-      background: #4d1d31;
-      border-radius: 22px;
-      padding: 22px;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 21px;
-    }
-
-    .card button,
-    .game-box button,
-    .auth-box button {
-      margin-top: 15px;
-      background: orange;
-      color: white;
-      border: none;
-      padding: 11px 20px;
-      border-radius: 14px;
+    .profile-name {
       font-weight: 700;
+      color: var(--gold);
+    }
+
+    button {
+      border: none;
       cursor: pointer;
       transition: 0.25s ease;
     }
@@ -212,218 +187,413 @@
       filter: brightness(1.08);
     }
 
-    .game-grid {
+    .primary-btn {
+      background: var(--orange);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 15px;
+      font-weight: 700;
+    }
+
+    .secondary-btn {
+      background: transparent;
+      color: white;
+      padding: 11px 18px;
+      border-radius: 15px;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .danger-btn {
+      background: #d92c4b;
+      color: white;
+      padding: 11px 18px;
+      border-radius: 15px;
+      font-weight: 700;
+    }
+
+    .hero {
+      background: linear-gradient(105deg, #f04865, #7f3e77 68%);
+      border-radius: 28px;
+      padding: 32px;
       display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "</>";
+      position: absolute;
+      right: 30px;
+      top: -20px;
+      font-size: 130px;
+      font-weight: 800;
+      opacity: 0.08;
+    }
+
+    .tag {
+      background: var(--gold);
+      color: #4b3900;
+      width: fit-content;
+      padding: 6px 15px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 58px);
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      font-size: clamp(26px, 4vw, 36px);
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .hero-visual {
+      display: grid;
+      gap: 15px;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 18px;
+      border-radius: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .stat-number {
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--gold);
+    }
+
+    .cards,
+    .game-grid,
+    .mini-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .cards {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .game-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+    }
+
+    .mini-grid {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 22px;
+    }
+
+    .card,
+    .game-box,
+    .settings-box,
+    .profile-box {
+      background: rgba(77, 29, 49, 0.96);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    }
+
+    .card-icon {
+      font-size: 34px;
+      margin-bottom: 12px;
     }
 
     .game-box {
-      background: #4d1d31;
-      border-radius: 22px;
-      padding: 24px;
-      min-height: 260px;
+      min-height: 300px;
     }
 
-    .quiz-option {
-      display: block;
+    .game-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .score {
+      background: #6b283a;
+      padding: 8px 12px;
+      border-radius: 12px;
+      color: var(--gold);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .quiz-option,
+    .logic-option {
       width: 100%;
       text-align: left;
       background: #6b283a;
       color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 12px;
-      margin: 10px 0;
-      cursor: pointer;
+      padding: 13px;
+      border-radius: 14px;
+      margin: 9px 0;
+      font-weight: 600;
     }
 
-    .quiz-option.correct {
-      background: #138a45;
+    .correct {
+      background: #148846 !important;
     }
 
-    .quiz-option.wrong {
-      background: #b3263a;
+    .wrong {
+      background: #b3263a !important;
+    }
+
+    .result {
+      margin-top: 13px;
+      color: var(--gold);
+      font-weight: 800;
+      min-height: 24px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      background: #2a101b;
+      border: 1px solid #87506a;
+      color: white;
+      padding: 13px 15px;
+      border-radius: 14px;
+      outline: none;
+      margin-top: 10px;
+      font-size: 15px;
     }
 
     .memory-board {
       display: grid;
-      grid-template-columns: repeat(4, 70px);
+      grid-template-columns: repeat(4, 1fr);
       gap: 10px;
-      margin-top: 15px;
+      margin-top: 16px;
     }
 
     .memory-card {
       height: 70px;
-      border-radius: 14px;
+      border-radius: 16px;
       background: #6b283a;
       display: grid;
       place-items: center;
-      font-size: 26px;
+      font-size: 24px;
+      font-weight: 800;
       cursor: pointer;
       user-select: none;
     }
 
-    .typing-input,
-    .code-input {
-      width: 100%;
-      padding: 13px;
-      margin-top: 15px;
-      border-radius: 12px;
-      border: 1px solid #87506a;
-      background: #2a101b;
-      color: white;
-      outline: none;
+    .sequence-box {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 14px 0;
     }
 
-    .result {
-      margin-top: 12px;
-      font-weight: 700;
-      color: #ffe076;
-    }
-
-    .news-list {
+    .seq-item {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #6b283a;
       display: grid;
-      gap: 18px;
+      place-items: center;
+      font-weight: 800;
+      color: var(--gold);
     }
 
-    .news-item {
-      background: #4d1d31;
-      padding: 22px;
-      border-radius: 20px;
+    .bug-code {
+      background: #1b0911;
+      border-radius: 15px;
+      padding: 16px;
+      line-height: 1.7;
+      color: #ffdae5;
+      overflow-x: auto;
+      margin: 14px 0;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .code-word-bank {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 14px 0;
+    }
+
+    .word-chip {
+      background: #6b283a;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 13px;
+      font-weight: 700;
+    }
+
+    .settings-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .profile-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .big-avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: #3c1624;
+      display: grid;
+      place-items: center;
+      font-size: 32px;
+      font-weight: 800;
     }
 
     .settings-row {
-      background: #4d1d31;
-      padding: 20px;
+      background: #5b223d;
+      padding: 18px;
       border-radius: 18px;
-      margin-bottom: 18px;
+      margin-top: 14px;
       display: flex;
       justify-content: space-between;
+      gap: 15px;
       align-items: center;
     }
 
     .switch {
-      width: 55px;
-      height: 30px;
-      background: #6b283a;
+      width: 56px;
+      height: 31px;
+      background: #2a101b;
       border-radius: 30px;
       padding: 4px;
+      flex-shrink: 0;
       cursor: pointer;
     }
 
     .switch span {
       display: block;
-      width: 22px;
-      height: 22px;
-      background: #ffe076;
+      width: 23px;
+      height: 23px;
       border-radius: 50%;
-      transition: 0.3s;
+      background: var(--gold);
+      transition: 0.3s ease;
     }
 
     .switch.active span {
       transform: translateX(25px);
     }
 
-    .auth-wrapper {
-      width: 100%;
-      max-width: 900px;
-      min-height: 540px;
-      background: #050505;
-      border-radius: 35px;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      box-shadow: 0 20px 45px rgba(0,0,0,0.45);
-    }
-
-    .auth-box {
-      padding: 45px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .auth-box input {
-      background: #111;
-      border: 1px solid #555;
-      color: white;
-      margin: 8px 0;
-      padding: 13px;
-      border-radius: 10px;
-      outline: none;
-    }
-
-    .auth-panel {
-      background: linear-gradient(135deg, orange, #eb4808);
-      padding: 45px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .auth-panel button {
-      background: transparent;
-      border: 2px solid white;
-      color: white;
-      padding: 12px 25px;
-      border-radius: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      margin-top: 20px;
+    .auth-card {
+      max-width: 580px;
+      background: #080407;
+      padding: 35px;
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
     }
 
     .hidden {
-      display: none;
+      display: none !important;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1100px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .game-grid,
+      .settings-grid,
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
       body {
-        padding: 12px;
-        align-items: flex-start;
+        padding: 10px;
       }
 
       .dashboard {
         flex-direction: column;
+        border-radius: 24px;
         min-height: auto;
       }
 
       .sidebar {
         width: 100%;
-        height: 75px;
+        padding: 12px;
       }
 
       .sidebar-icons {
         flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+        gap: 8px;
+      }
+
+      .side-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 21px;
       }
 
       .page {
-        padding: 22px;
+        padding: 20px;
       }
 
-      .header,
-      .hero {
+      .header {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
       }
 
       .search {
-        width: 100%;
         margin-left: 0;
+        max-width: 100%;
+      }
+
+      .profile-pill {
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 24px;
       }
 
       .cards,
-      .game-grid {
+      .mini-grid,
+      .game-grid,
+      .settings-grid {
         grid-template-columns: 1fr;
       }
 
-      .memory-board {
-        grid-template-columns: repeat(4, 1fr);
+      .memory-card {
+        height: 58px;
+        font-size: 19px;
       }
 
-      .auth-wrapper {
-        grid-template-columns: 1fr;
+      .settings-row {
+        align-items: flex-start;
       }
     }
   </style>
@@ -435,194 +605,344 @@
 
     <aside class="sidebar">
       <div class="sidebar-icons">
-        <div class="side-icon active" data-page="home">🏠</div>
-        <div class="side-icon" data-page="games">🎮</div>
-        <div class="side-icon" data-page="news">📰</div>
-        <div class="side-icon" data-page="settings">⚙️</div>
-        <div class="side-icon" data-page="login">👤</div>
+        <div class="side-icon active" data-page="home" title="Home">🏠</div>
+        <div class="side-icon" data-page="games" title="Games">🎮</div>
+        <div class="side-icon" data-page="learn" title="Learn">💡</div>
+        <div class="side-icon" data-page="settings" title="Settings">⚙️</div>
       </div>
     </aside>
 
     <section id="home" class="page active">
       <header class="header">
-        <div>
-          <div class="greeting">Good evening,</div>
-          <div class="username" id="homeUser">Guest Player</div>
+        <div class="brand">
+          <div class="logo-text">Logi<span>Code</span></div>
+          <div class="greeting" id="homeGreeting">Good evening, Guest Player</div>
         </div>
 
-        <input class="search" placeholder="Search games, lessons, challenges..." />
+        <input class="search" id="searchInput" placeholder="Search games, logic, quiz..." oninput="searchGames()" />
 
-        <button class="login-btn" onclick="openPage('login')">Sign up or Login</button>
+        <div class="profile-pill" id="topProfile">
+          <div class="avatar" id="topAvatar">?</div>
+          <div>
+            <div class="profile-name" id="topName">Guest</div>
+            <small id="topAge">Login from Settings</small>
+          </div>
+        </div>
+
+        <button class="primary-btn" id="headerLoginBtn" onclick="openPage('settings')">Login</button>
       </header>
 
       <div class="hero">
-        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=600&auto=format&fit=crop" alt="Games">
         <div>
-          <div class="tag">Popular</div>
-          <h1>LogiCode Games</h1>
-          <p>Learn programming logic through small interactive games, quizzes, memory cards, typing challenges and coding puzzles.</p>
+          <div class="tag">Logic + Code</div>
+          <h1>Play games. Build logic. Learn code.</h1>
+          <p>
+            LogiCode turns programming basics into small interactive games.
+            Practice variables, loops, conditions, memory, debugging and typing in a fun way.
+          </p>
+          <br>
+          <button class="primary-btn" onclick="openPage('games')">Start Playing</button>
+          <button class="secondary-btn" onclick="openPage('learn')">View Learning Path</button>
+        </div>
+
+        <div class="hero-visual">
+          <div class="stat-card">
+            <div class="stat-number" id="totalScore">0</div>
+            <p>Total local score</p>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">8+</div>
+            <p>Interactive mini games</p>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">100%</div>
+            <p>Local browser project</p>
+          </div>
         </div>
       </div>
 
-      <div class="cards">
-        <div class="card">
-          <h3>JavaScript Quiz</h3>
-          <p>Answer coding questions and improve your programming basics.</p>
-          <button onclick="openPage('games')">Play Now</button>
+      <div class="cards" id="homeCards">
+        <div class="card searchable" data-title="quiz javascript code">
+          <div class="card-icon">🧠</div>
+          <h3>Code Quiz</h3>
+          <p>Answer beginner-friendly programming questions.</p>
+          <button class="primary-btn" onclick="openPage('games')">Play</button>
         </div>
 
-        <div class="card">
+        <div class="card searchable" data-title="memory match programming symbols">
+          <div class="card-icon">🃏</div>
           <h3>Memory Match</h3>
-          <p>Match programming symbols and train your memory.</p>
-          <button onclick="openPage('games')">Start Game</button>
+          <p>Match programming symbols and train your brain.</p>
+          <button class="primary-btn" onclick="openPage('games')">Play</button>
         </div>
 
-        <div class="card">
-          <h3>Code Typing</h3>
-          <p>Type code snippets correctly and improve speed.</p>
-          <button onclick="openPage('games')">Try It</button>
+        <div class="card searchable" data-title="bug finder debugging">
+          <div class="card-icon">🐞</div>
+          <h3>Bug Finder</h3>
+          <p>Spot the wrong code and fix the bug.</p>
+          <button class="primary-btn" onclick="openPage('games')">Play</button>
+        </div>
+
+        <div class="card searchable" data-title="logic sequence pattern">
+          <div class="card-icon">🔢</div>
+          <h3>Logic Sequence</h3>
+          <p>Guess the missing number using logic.</p>
+          <button class="primary-btn" onclick="openPage('games')">Play</button>
         </div>
       </div>
     </section>
 
     <section id="games" class="page">
-      <h2>Games</h2>
+      <h2>Programming Games</h2>
 
       <div class="game-grid">
 
         <div class="game-box">
-          <h3>JavaScript Quiz</h3>
-          <p id="quizQuestion">Which keyword is used to declare a variable in JavaScript?</p>
+          <div class="game-top">
+            <div>
+              <h3>1. Code Quiz</h3>
+              <p id="quizQuestion">Loading question...</p>
+            </div>
+            <div class="score" id="quizScore">0</div>
+          </div>
 
-          <button class="quiz-option" onclick="checkQuiz(this, false)">define</button>
-          <button class="quiz-option" onclick="checkQuiz(this, true)">let</button>
-          <button class="quiz-option" onclick="checkQuiz(this, false)">make</button>
-          <button class="quiz-option" onclick="checkQuiz(this, false)">newvar</button>
-
+          <div id="quizOptions"></div>
+          <button class="secondary-btn" onclick="nextQuiz()">Next Question</button>
           <div class="result" id="quizResult"></div>
         </div>
 
         <div class="game-box">
-          <h3>Memory Match</h3>
-          <p>Match all same programming symbols.</p>
+          <div class="game-top">
+            <div>
+              <h3>2. Memory Match</h3>
+              <p>Match all same programming cards.</p>
+            </div>
+            <div class="score" id="memoryScore">0</div>
+          </div>
 
           <div class="memory-board" id="memoryBoard"></div>
-
-          <button onclick="startMemory()">Restart</button>
+          <button class="secondary-btn" onclick="startMemory()">Restart</button>
           <div class="result" id="memoryResult"></div>
         </div>
 
         <div class="game-box">
-          <h3>Code Typing</h3>
-          <p>Type this exactly:</p>
-          <h3 id="typingText">console.log("Hello World");</h3>
+          <div class="game-top">
+            <div>
+              <h3>3. Code Typing</h3>
+              <p>Type the code exactly.</p>
+            </div>
+            <div class="score" id="typingScore">0</div>
+          </div>
 
-          <input class="typing-input" id="typingInput" placeholder="Type here..." oninput="checkTyping()">
+          <h3 id="typingText">console.log("Hello World");</h3>
+          <input id="typingInput" placeholder="Type here..." oninput="checkTyping()" />
+          <button class="secondary-btn" onclick="newTypingChallenge()">New Code</button>
           <div class="result" id="typingResult"></div>
         </div>
 
         <div class="game-box">
-          <h3>Mini Code Puzzle</h3>
-          <p>Complete the missing word:</p>
-          <h3>for (let i = 0; i &lt; 5; i++) { ____ }</h3>
+          <div class="game-top">
+            <div>
+              <h3>4. Bug Finder</h3>
+              <p>Find the correct fixed line.</p>
+            </div>
+            <div class="score" id="bugScore">0</div>
+          </div>
 
-          <input class="code-input" id="codeInput" placeholder="Enter missing code">
-          <button onclick="checkCodePuzzle()">Submit</button>
-          <div class="result" id="codeResult"></div>
+          <pre class="bug-code" id="bugCode"></pre>
+          <div id="bugOptions"></div>
+          <button class="secondary-btn" onclick="loadBugGame()">New Bug</button>
+          <div class="result" id="bugResult"></div>
+        </div>
+
+        <div class="game-box">
+          <div class="game-top">
+            <div>
+              <h3>5. Logic Sequence</h3>
+              <p>Guess the missing number.</p>
+            </div>
+            <div class="score" id="sequenceScore">0</div>
+          </div>
+
+          <div class="sequence-box" id="sequenceBox"></div>
+          <input id="sequenceInput" type="number" placeholder="Missing number">
+          <button class="primary-btn" onclick="checkSequence()">Submit</button>
+          <button class="secondary-btn" onclick="newSequence()">New Sequence</button>
+          <div class="result" id="sequenceResult"></div>
+        </div>
+
+        <div class="game-box">
+          <div class="game-top">
+            <div>
+              <h3>6. Output Predictor</h3>
+              <p>What will this code print?</p>
+            </div>
+            <div class="score" id="outputScore">0</div>
+          </div>
+
+          <pre class="bug-code" id="outputCode"></pre>
+          <input id="outputInput" placeholder="Enter output">
+          <button class="primary-btn" onclick="checkOutput()">Check</button>
+          <button class="secondary-btn" onclick="newOutput()">New</button>
+          <div class="result" id="outputResult"></div>
+        </div>
+
+        <div class="game-box">
+          <div class="game-top">
+            <div>
+              <h3>7. Condition Builder</h3>
+              <p>Choose the correct condition.</p>
+            </div>
+            <div class="score" id="conditionScore">0</div>
+          </div>
+
+          <p id="conditionQuestion"></p>
+          <div id="conditionOptions"></div>
+          <button class="secondary-btn" onclick="newCondition()">New</button>
+          <div class="result" id="conditionResult"></div>
+        </div>
+
+        <div class="game-box">
+          <div class="game-top">
+            <div>
+              <h3>8. Code Word Builder</h3>
+              <p>Build a valid JavaScript line.</p>
+            </div>
+            <div class="score" id="wordScore">0</div>
+          </div>
+
+          <div class="code-word-bank" id="wordBank"></div>
+          <input id="wordInput" placeholder="Arrange and type the correct line">
+          <button class="primary-btn" onclick="checkWordGame()">Check</button>
+          <button class="secondary-btn" onclick="newWordGame()">New</button>
+          <div class="result" id="wordResult"></div>
         </div>
 
       </div>
     </section>
 
-    <section id="news" class="page">
-      <h2>News & Updates</h2>
+    <section id="learn" class="page">
+      <h2>Learning Path</h2>
 
-      <div class="news-list">
-        <div class="news-item">
-          <h3>New AI Logic Challenges Added</h3>
-          <p>Practice conditions, loops and variables with simple puzzle-based games.</p>
+      <div class="mini-grid">
+        <div class="card">
+          <div class="card-icon">01</div>
+          <h3>Logic Basics</h3>
+          <p>Understand patterns, sequences, true/false thinking and problem solving.</p>
         </div>
 
-        <div class="news-item">
-          <h3>Beginner Friendly Programming Path</h3>
-          <p>Start from basic logic and slowly move towards real coding concepts.</p>
+        <div class="card">
+          <div class="card-icon">02</div>
+          <h3>Variables</h3>
+          <p>Learn how values are stored using names like score, age and username.</p>
         </div>
 
-        <div class="news-item">
-          <h3>Daily Coding Streak Coming Soon</h3>
-          <p>Earn points by solving small challenges every day.</p>
+        <div class="card">
+          <div class="card-icon">03</div>
+          <h3>Conditions</h3>
+          <p>Use if/else logic to make decisions inside a program.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">04</div>
+          <h3>Loops</h3>
+          <p>Repeat a task multiple times using for loops and while loops.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">05</div>
+          <h3>Debugging</h3>
+          <p>Find mistakes, fix syntax and understand why code breaks.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">06</div>
+          <h3>Mini Projects</h3>
+          <p>Build small games and improve your coding confidence.</p>
         </div>
       </div>
     </section>
 
     <section id="settings" class="page">
-      <h2>Settings</h2>
+      <h2>Settings & Profile</h2>
 
-      <div class="settings-row">
-        <div>
-          <h3>Sound Effects</h3>
-          <p>Enable or disable game sounds.</p>
-        </div>
-        <div class="switch" onclick="toggleSwitch(this)"><span></span></div>
-      </div>
+      <div class="settings-grid">
+        <div class="profile-box">
+          <div class="profile-card">
+            <div class="big-avatar" id="profileAvatar">?</div>
+            <div>
+              <h3 id="profileName">Guest Player</h3>
+              <p id="profileDetails">Login locally using your name.</p>
+            </div>
+          </div>
 
-      <div class="settings-row">
-        <div>
-          <h3>Dark Game Mode</h3>
-          <p>Keep the premium dark gaming interface.</p>
-        </div>
-        <div class="switch active" onclick="toggleSwitch(this)"><span></span></div>
-      </div>
+          <div id="loginForm">
+            <h3>Local Login</h3>
+            <p>Name is required. Age is optional. Data saves only in this browser.</p>
 
-      <div class="settings-row">
-        <div>
-          <h3>Beginner Mode</h3>
-          <p>Show easier questions for new learners.</p>
-        </div>
-        <div class="switch active" onclick="toggleSwitch(this)"><span></span></div>
-      </div>
-    </section>
+            <input id="nameInput" placeholder="Enter your name">
+            <input id="ageInput" type="number" placeholder="Enter your age (optional)">
 
-    <section id="login" class="page">
-      <div class="auth-wrapper">
+            <button class="primary-btn" onclick="saveProfile()">Save Profile</button>
+            <div class="result" id="profileMessage"></div>
+          </div>
 
-        <div class="auth-box" id="signInBox">
-          <h1>Sign In</h1>
-          <p>Welcome back to LogiCode.</p>
-
-          <input id="loginEmail" type="email" placeholder="Email">
-          <input id="loginPassword" type="password" placeholder="Password">
-
-          <button onclick="loginUser()">Sign In</button>
-          <p class="result" id="loginMessage"></p>
+          <div id="loggedInActions" class="hidden">
+            <button class="primary-btn" onclick="editProfile()">Edit Profile</button>
+            <button class="danger-btn" onclick="logoutProfile()">Logout</button>
+          </div>
         </div>
 
-        <div class="auth-box hidden" id="signUpBox">
-          <h1>Create Account</h1>
-          <p>Start your coding game journey.</p>
+        <div class="settings-box">
+          <h3>Game Settings</h3>
 
-          <input id="registerName" type="text" placeholder="Name">
-          <input id="registerEmail" type="email" placeholder="Email">
-          <input id="registerPassword" type="password" placeholder="Password">
+          <div class="settings-row">
+            <div>
+              <h3>Sound Effects</h3>
+              <p>UI option only for project look.</p>
+            </div>
+            <div class="switch active" onclick="toggleSwitch(this)"><span></span></div>
+          </div>
 
-          <button onclick="registerUser()">Sign Up</button>
-          <p class="result" id="registerMessage"></p>
+          <div class="settings-row">
+            <div>
+              <h3>Beginner Mode</h3>
+              <p>Keep questions simple and friendly.</p>
+            </div>
+            <div class="switch active" onclick="toggleSwitch(this)"><span></span></div>
+          </div>
+
+          <div class="settings-row">
+            <div>
+              <h3>Save Local Score</h3>
+              <p>Score is stored in browser localStorage.</p>
+            </div>
+            <div class="switch active" onclick="toggleSwitch(this)"><span></span></div>
+          </div>
+
+          <button class="danger-btn" onclick="resetScore()">Reset Score</button>
         </div>
-
-        <div class="auth-panel">
-          <h1 id="authTitle">Welcome to LogiCode</h1>
-          <p id="authText">If you do not have an account, create one now.</p>
-          <button onclick="toggleAuth()" id="authToggleBtn">Sign Up</button>
-        </div>
-
       </div>
     </section>
 
   </div>
 
   <script>
-    const sideIcons = document.querySelectorAll(".side-icon");
     const pages = document.querySelectorAll(".page");
+    const sideIcons = document.querySelectorAll(".side-icon");
+
+    let totalScore = Number(localStorage.getItem("logicodeScore")) || 0;
+
+    const state = {
+      quizScore: 0,
+      memoryScore: 0,
+      typingScore: 0,
+      bugScore: 0,
+      sequenceScore: 0,
+      outputScore: 0,
+      conditionScore: 0,
+      wordScore: 0
+    };
 
     function openPage(pageId) {
       pages.forEach(page => page.classList.remove("active"));
@@ -635,38 +955,201 @@
     }
 
     sideIcons.forEach(icon => {
-      icon.addEventListener("click", () => {
-        openPage(icon.dataset.page);
-      });
+      icon.addEventListener("click", () => openPage(icon.dataset.page));
     });
 
-    function checkQuiz(button, isCorrect) {
-      document.querySelectorAll(".quiz-option").forEach(btn => {
-        btn.disabled = true;
-      });
+    function addScore(type, amount = 10) {
+      state[type] += amount;
+      totalScore += amount;
 
-      if (isCorrect) {
-        button.classList.add("correct");
-        document.getElementById("quizResult").innerText = "Correct! let is used to declare variables.";
+      localStorage.setItem("logicodeScore", totalScore);
+
+      document.getElementById(type).innerText = state[type];
+      document.getElementById("totalScore").innerText = totalScore;
+    }
+
+    function resetScore() {
+      totalScore = 0;
+      localStorage.setItem("logicodeScore", 0);
+      Object.keys(state).forEach(key => state[key] = 0);
+
+      document.getElementById("totalScore").innerText = 0;
+      document.getElementById("quizScore").innerText = 0;
+      document.getElementById("memoryScore").innerText = 0;
+      document.getElementById("typingScore").innerText = 0;
+      document.getElementById("bugScore").innerText = 0;
+      document.getElementById("sequenceScore").innerText = 0;
+      document.getElementById("outputScore").innerText = 0;
+      document.getElementById("conditionScore").innerText = 0;
+      document.getElementById("wordScore").innerText = 0;
+    }
+
+    function getIndiaGreeting() {
+      const indiaTime = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+      const hour = new Date(indiaTime).getHours();
+
+      if (hour >= 5 && hour < 12) return "Good morning";
+      if (hour >= 12 && hour < 17) return "Good afternoon";
+      if (hour >= 17 && hour < 21) return "Good evening";
+      return "Good night";
+    }
+
+    function loadProfile() {
+      const profile = JSON.parse(localStorage.getItem("logicodeProfile"));
+      const greeting = getIndiaGreeting();
+
+      if (profile && profile.name) {
+        const initial = profile.name.charAt(0).toUpperCase();
+
+        document.getElementById("homeGreeting").innerText = `${greeting}, ${profile.name}`;
+        document.getElementById("topName").innerText = profile.name;
+        document.getElementById("topAge").innerText = profile.age ? `Age: ${profile.age}` : "Local profile";
+        document.getElementById("topAvatar").innerText = initial;
+        document.getElementById("profileAvatar").innerText = initial;
+        document.getElementById("profileName").innerText = profile.name;
+        document.getElementById("profileDetails").innerText = profile.age ? `Age: ${profile.age}` : "Age not added";
+
+        document.getElementById("headerLoginBtn").classList.add("hidden");
+        document.getElementById("loginForm").classList.add("hidden");
+        document.getElementById("loggedInActions").classList.remove("hidden");
       } else {
-        button.classList.add("wrong");
-        document.getElementById("quizResult").innerText = "Wrong answer. Correct answer is let.";
+        document.getElementById("homeGreeting").innerText = `${greeting}, Guest Player`;
+        document.getElementById("topName").innerText = "Guest";
+        document.getElementById("topAge").innerText = "Login from Settings";
+        document.getElementById("topAvatar").innerText = "?";
+        document.getElementById("profileAvatar").innerText = "?";
+        document.getElementById("profileName").innerText = "Guest Player";
+        document.getElementById("profileDetails").innerText = "Login locally using your name.";
+
+        document.getElementById("headerLoginBtn").classList.remove("hidden");
+        document.getElementById("loginForm").classList.remove("hidden");
+        document.getElementById("loggedInActions").classList.add("hidden");
       }
     }
 
-    const symbols = ["JS", "JS", "{}", "{}", "</>", "</>", "AI", "AI"];
+    function saveProfile() {
+      const name = document.getElementById("nameInput").value.trim();
+      const age = document.getElementById("ageInput").value.trim();
+
+      if (!name) {
+        document.getElementById("profileMessage").innerText = "Name is required.";
+        return;
+      }
+
+      localStorage.setItem("logicodeProfile", JSON.stringify({ name, age }));
+      document.getElementById("profileMessage").innerText = "Profile saved successfully.";
+
+      document.getElementById("nameInput").value = "";
+      document.getElementById("ageInput").value = "";
+
+      loadProfile();
+      openPage("home");
+    }
+
+    function editProfile() {
+      const profile = JSON.parse(localStorage.getItem("logicodeProfile"));
+
+      document.getElementById("loginForm").classList.remove("hidden");
+      document.getElementById("loggedInActions").classList.add("hidden");
+
+      if (profile) {
+        document.getElementById("nameInput").value = profile.name || "";
+        document.getElementById("ageInput").value = profile.age || "";
+      }
+    }
+
+    function logoutProfile() {
+      localStorage.removeItem("logicodeProfile");
+      loadProfile();
+      openPage("settings");
+    }
+
+    function toggleSwitch(element) {
+      element.classList.toggle("active");
+    }
+
+    function searchGames() {
+      const value = document.getElementById("searchInput").value.toLowerCase();
+      document.querySelectorAll(".searchable").forEach(card => {
+        const title = card.dataset.title.toLowerCase();
+        card.style.display = title.includes(value) ? "block" : "none";
+      });
+    }
+
+    const quizData = [
+      {
+        q: "Which keyword is used to declare a block-scoped variable?",
+        options: ["make", "let", "define", "newvar"],
+        answer: "let"
+      },
+      {
+        q: "Which symbol is used for strict equality in JavaScript?",
+        options: ["=", "==", "===", "!="],
+        answer: "==="
+      },
+      {
+        q: "Which loop is commonly used when you know the number of repetitions?",
+        options: ["for", "again", "repeatNow", "cycle"],
+        answer: "for"
+      },
+      {
+        q: "Which method prints something in browser console?",
+        options: ["print()", "console.log()", "show()", "display()"],
+        answer: "console.log()"
+      }
+    ];
+
+    let quizIndex = 0;
+
+    function loadQuiz() {
+      const quiz = quizData[quizIndex];
+      document.getElementById("quizQuestion").innerText = quiz.q;
+
+      const optionsBox = document.getElementById("quizOptions");
+      optionsBox.innerHTML = "";
+
+      quiz.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.className = "quiz-option";
+        btn.innerText = option;
+        btn.onclick = () => checkQuiz(btn, option === quiz.answer);
+        optionsBox.appendChild(btn);
+      });
+
+      document.getElementById("quizResult").innerText = "";
+    }
+
+    function checkQuiz(button, correct) {
+      document.querySelectorAll("#quizOptions button").forEach(btn => btn.disabled = true);
+
+      if (correct) {
+        button.classList.add("correct");
+        document.getElementById("quizResult").innerText = "Correct answer!";
+        addScore("quizScore", 10);
+      } else {
+        button.classList.add("wrong");
+        document.getElementById("quizResult").innerText = "Wrong. Try the next one.";
+      }
+    }
+
+    function nextQuiz() {
+      quizIndex = (quizIndex + 1) % quizData.length;
+      loadQuiz();
+    }
+
+    const memorySymbols = ["JS", "JS", "{}", "{}", "</>", "</>", "AI", "AI"];
     let firstCard = null;
     let lockBoard = false;
-    let matched = 0;
+    let matchedCards = 0;
 
     function startMemory() {
       const board = document.getElementById("memoryBoard");
-      const shuffled = [...symbols].sort(() => Math.random() - 0.5);
+      const shuffled = [...memorySymbols].sort(() => Math.random() - 0.5);
 
       board.innerHTML = "";
       firstCard = null;
       lockBoard = false;
-      matched = 0;
+      matchedCards = 0;
       document.getElementById("memoryResult").innerText = "";
 
       shuffled.forEach(symbol => {
@@ -674,9 +1157,7 @@
         card.className = "memory-card";
         card.dataset.symbol = symbol;
         card.innerText = "?";
-
         card.onclick = () => flipCard(card);
-
         board.appendChild(card);
       });
     }
@@ -692,11 +1173,12 @@
       }
 
       if (firstCard.dataset.symbol === card.dataset.symbol) {
-        matched += 2;
+        matchedCards += 2;
         firstCard = null;
 
-        if (matched === symbols.length) {
-          document.getElementById("memoryResult").innerText = "Great! You matched all cards.";
+        if (matchedCards === memorySymbols.length) {
+          document.getElementById("memoryResult").innerText = "You matched all cards!";
+          addScore("memoryScore", 20);
         }
       } else {
         lockBoard = true;
@@ -706,8 +1188,23 @@
           card.innerText = "?";
           firstCard = null;
           lockBoard = false;
-        }, 700);
+        }, 650);
       }
+    }
+
+    const typingChallenges = [
+      'console.log("Hello World");',
+      'let score = 10;',
+      'if (age >= 18) {',
+      'for (let i = 0; i < 5; i++) {',
+      'const name = "LogiCode";'
+    ];
+
+    function newTypingChallenge() {
+      const random = typingChallenges[Math.floor(Math.random() * typingChallenges.length)];
+      document.getElementById("typingText").innerText = random;
+      document.getElementById("typingInput").value = "";
+      document.getElementById("typingResult").innerText = "";
     }
 
     function checkTyping() {
@@ -717,85 +1214,249 @@
 
       if (input === target) {
         result.innerText = "Perfect typing!";
+        addScore("typingScore", 10);
       } else if (target.startsWith(input)) {
-        result.innerText = "Keep going...";
+        result.innerText = "Correct so far...";
       } else {
-        result.innerText = "Small mistake. Check carefully.";
+        result.innerText = "Mistake detected.";
       }
     }
 
-    function checkCodePuzzle() {
-      const input = document.getElementById("codeInput").value.trim();
-      const result = document.getElementById("codeResult");
+    const bugGames = [
+      {
+        code: "let score == 10;",
+        options: ["let score = 10;", "let score === 10;", "score let = 10;"],
+        answer: "let score = 10;"
+      },
+      {
+        code: "if age > 18 { console.log(age); }",
+        options: ["if (age > 18) { console.log(age); }", "if age > 18 then", "if = age > 18"],
+        answer: "if (age > 18) { console.log(age); }"
+      },
+      {
+        code: "for let i = 0; i < 5; i++",
+        options: ["for (let i = 0; i < 5; i++)", "for i let = 0", "loop (i < 5)"],
+        answer: "for (let i = 0; i < 5; i++)"
+      }
+    ];
 
-      if (input === "console.log(i);" || input === "console.log(i)") {
-        result.innerText = "Correct! The loop will print numbers from 0 to 4.";
+    let currentBug = null;
+
+    function loadBugGame() {
+      currentBug = bugGames[Math.floor(Math.random() * bugGames.length)];
+      document.getElementById("bugCode").innerText = currentBug.code;
+
+      const box = document.getElementById("bugOptions");
+      box.innerHTML = "";
+
+      currentBug.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.className = "logic-option";
+        btn.innerText = option;
+        btn.onclick = () => checkBug(btn, option === currentBug.answer);
+        box.appendChild(btn);
+      });
+
+      document.getElementById("bugResult").innerText = "";
+    }
+
+    function checkBug(button, correct) {
+      document.querySelectorAll("#bugOptions button").forEach(btn => btn.disabled = true);
+
+      if (correct) {
+        button.classList.add("correct");
+        document.getElementById("bugResult").innerText = "Bug fixed!";
+        addScore("bugScore", 15);
       } else {
-        result.innerText = "Try: console.log(i);";
+        button.classList.add("wrong");
+        document.getElementById("bugResult").innerText = "Not fixed. Try another bug.";
       }
     }
 
-    function toggleSwitch(element) {
-      element.classList.toggle("active");
+    const sequences = [
+      { list: [2, 4, 6, "?"], answer: 8 },
+      { list: [3, 6, 12, "?"], answer: 24 },
+      { list: [5, 10, 15, "?"], answer: 20 },
+      { list: [1, 4, 9, "?"], answer: 16 }
+    ];
+
+    let currentSequence = null;
+
+    function newSequence() {
+      currentSequence = sequences[Math.floor(Math.random() * sequences.length)];
+      const box = document.getElementById("sequenceBox");
+      box.innerHTML = "";
+
+      currentSequence.list.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "seq-item";
+        div.innerText = item;
+        box.appendChild(div);
+      });
+
+      document.getElementById("sequenceInput").value = "";
+      document.getElementById("sequenceResult").innerText = "";
     }
 
-    let isRegisterMode = false;
+    function checkSequence() {
+      const input = Number(document.getElementById("sequenceInput").value);
 
-    function toggleAuth() {
-      isRegisterMode = !isRegisterMode;
-
-      document.getElementById("signInBox").classList.toggle("hidden");
-      document.getElementById("signUpBox").classList.toggle("hidden");
-
-      document.getElementById("authTitle").innerText = isRegisterMode ? "Welcome Back" : "Welcome to LogiCode";
-      document.getElementById("authText").innerText = isRegisterMode
-        ? "Already have an account? Sign in now."
-        : "If you do not have an account, create one now.";
-
-      document.getElementById("authToggleBtn").innerText = isRegisterMode ? "Sign In" : "Sign Up";
-    }
-
-    function registerUser() {
-      const name = document.getElementById("registerName").value.trim();
-      const email = document.getElementById("registerEmail").value.trim();
-      const password = document.getElementById("registerPassword").value.trim();
-
-      if (!name || !email || !password) {
-        document.getElementById("registerMessage").innerText = "Please fill all details.";
-        return;
-      }
-
-      localStorage.setItem("logicodeUser", JSON.stringify({ name, email, password }));
-      document.getElementById("registerMessage").innerText = "Account created successfully!";
-      document.getElementById("homeUser").innerText = name;
-    }
-
-    function loginUser() {
-      const email = document.getElementById("loginEmail").value.trim();
-      const password = document.getElementById("loginPassword").value.trim();
-      const user = JSON.parse(localStorage.getItem("logicodeUser"));
-
-      if (!user) {
-        document.getElementById("loginMessage").innerText = "No account found. Please sign up first.";
-        return;
-      }
-
-      if (email === user.email && password === user.password) {
-        document.getElementById("loginMessage").innerText = "Login successful!";
-        document.getElementById("homeUser").innerText = user.name;
-        setTimeout(() => openPage("home"), 700);
+      if (input === currentSequence.answer) {
+        document.getElementById("sequenceResult").innerText = "Correct logic!";
+        addScore("sequenceScore", 10);
       } else {
-        document.getElementById("loginMessage").innerText = "Wrong email or password.";
+        document.getElementById("sequenceResult").innerText = "Wrong sequence. Think again.";
       }
     }
 
-    const savedUser = JSON.parse(localStorage.getItem("logicodeUser"));
-    if (savedUser) {
-      document.getElementById("homeUser").innerText = savedUser.name;
+    const outputs = [
+      {
+        code: "let x = 5;\nx = x + 2;\nconsole.log(x);",
+        answer: "7"
+      },
+      {
+        code: "let name = 'Code';\nconsole.log(name);",
+        answer: "Code"
+      },
+      {
+        code: "console.log(3 * 4);",
+        answer: "12"
+      }
+    ];
+
+    let currentOutput = null;
+
+    function newOutput() {
+      currentOutput = outputs[Math.floor(Math.random() * outputs.length)];
+      document.getElementById("outputCode").innerText = currentOutput.code;
+      document.getElementById("outputInput").value = "";
+      document.getElementById("outputResult").innerText = "";
     }
 
+    function checkOutput() {
+      const input = document.getElementById("outputInput").value.trim();
+
+      if (input === currentOutput.answer) {
+        document.getElementById("outputResult").innerText = "Correct output!";
+        addScore("outputScore", 10);
+      } else {
+        document.getElementById("outputResult").innerText = "Wrong output. Read the code carefully.";
+      }
+    }
+
+    const conditions = [
+      {
+        q: "User can vote if age is 18 or more. Which condition is correct?",
+        options: ["age >= 18", "age < 18", "age = 18"],
+        answer: "age >= 18"
+      },
+      {
+        q: "Password is valid if length is more than 7. Choose condition.",
+        options: ["password.length > 7", "password > 7", "length.password = 7"],
+        answer: "password.length > 7"
+      },
+      {
+        q: "Score is excellent if it is 90 or above.",
+        options: ["score >= 90", "score <= 90", "score == excellent"],
+        answer: "score >= 90"
+      }
+    ];
+
+    let currentCondition = null;
+
+    function newCondition() {
+      currentCondition = conditions[Math.floor(Math.random() * conditions.length)];
+      document.getElementById("conditionQuestion").innerText = currentCondition.q;
+
+      const box = document.getElementById("conditionOptions");
+      box.innerHTML = "";
+
+      currentCondition.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.className = "logic-option";
+        btn.innerText = option;
+        btn.onclick = () => checkCondition(btn, option === currentCondition.answer);
+        box.appendChild(btn);
+      });
+
+      document.getElementById("conditionResult").innerText = "";
+    }
+
+    function checkCondition(button, correct) {
+      document.querySelectorAll("#conditionOptions button").forEach(btn => btn.disabled = true);
+
+      if (correct) {
+        button.classList.add("correct");
+        document.getElementById("conditionResult").innerText = "Correct condition!";
+        addScore("conditionScore", 10);
+      } else {
+        button.classList.add("wrong");
+        document.getElementById("conditionResult").innerText = "Wrong condition.";
+      }
+    }
+
+    const wordGames = [
+      {
+        words: ["let", "points", "=", "50;"],
+        answer: "let points = 50;"
+      },
+      {
+        words: ["console.log", "(", '"Done"', ");"],
+        answer: 'console.log("Done");'
+      },
+      {
+        words: ["const", "game", "=", '"LogiCode";'],
+        answer: 'const game = "LogiCode";'
+      }
+    ];
+
+    let currentWord = null;
+
+    function newWordGame() {
+      currentWord = wordGames[Math.floor(Math.random() * wordGames.length)];
+      const shuffled = [...currentWord.words].sort(() => Math.random() - 0.5);
+
+      const bank = document.getElementById("wordBank");
+      bank.innerHTML = "";
+
+      shuffled.forEach(word => {
+        const chip = document.createElement("button");
+        chip.className = "word-chip";
+        chip.innerText = word;
+        chip.onclick = () => {
+          document.getElementById("wordInput").value += word + " ";
+        };
+        bank.appendChild(chip);
+      });
+
+      document.getElementById("wordInput").value = "";
+      document.getElementById("wordResult").innerText = "";
+    }
+
+    function checkWordGame() {
+      const input = document.getElementById("wordInput").value.trim().replace(/\s+/g, " ");
+
+      if (input === currentWord.answer) {
+        document.getElementById("wordResult").innerText = "Valid code line!";
+        addScore("wordScore", 10);
+      } else {
+        document.getElementById("wordResult").innerText = `Correct answer: ${currentWord.answer}`;
+      }
+    }
+
+    document.getElementById("totalScore").innerText = totalScore;
+
+    loadProfile();
+    loadQuiz();
     startMemory();
+    newTypingChallenge();
+    loadBugGame();
+    newSequence();
+    newOutput();
+    newCondition();
+    newWordGame();
   </script>
 
 </body>
+
 </html>
